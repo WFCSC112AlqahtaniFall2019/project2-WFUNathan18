@@ -20,25 +20,34 @@ int main() {
 
     // get input: first is random seed, second is vector length
     int seed, length;
+    cout << "Please type in a srand() seed, then please type the desired vector length" << endl;
     cin >> seed >> length;
     srand(seed);
 
     vector<int> v(length);  // vector to be sorted
     vector<int> t(length);  // temporary workspace
+
     // unit test for merge
     /* your code here */
     // initialize and print input
+    cout << "Unorganized Values:" << endl;
     for(int i = 0; i < v.size(); i++) {
         v.at(i) = rand() % 100;
         cout << v.at(i) << '\t';
     }
     cout << endl;
 
-    // sort v
+    // Sort v
     /* your code here */
     mergeSort(v, t, 0, v.size());
 
-    // print output
+    // Overwrite v with the organized values in t
+    for (int i = 0; i < v.size(); i++) {
+        v.at(i) = t.at(i);
+    }
+
+    // Print Output
+    cout << "Organized Values" << endl;
     for(int i = 0; i < v.size(); i++) {
         cout << v.at(i) << '\t';
     }
@@ -65,16 +74,38 @@ void mergeSort(vector<int>& a, vector<int>& tmp, int left, int right) {
     // Right Half
     mergeSort(a, tmp, (((left + right) / 2) + 1), right);
 
-    // Organize and Merge
-    mergeSortedLists(a, tmp, left, (((right + left) + 1) / 2), right);
+    // Organize
+    mergeSortedLists(a, tmp, left, ((right + left) / 2), right);
 }
 
 void mergeSortedLists(vector<int>& a, vector<int>& tmp, int left, int middle, int right) {
-    for (int i = left; i > middle; i++) {
-        if (a.at(i) < a.at(i + 1)) {
-            tmp.at(i) = a.at(i);
-            a.at(i) = a.at(i + 1);
-            a.at(i + 1) = tmp.at(i);
+    int i = left;
+    int j = (middle + 1);
+    int k = left;
+    while (i < (middle + 1) && j < (right + 1)) { // If left element is lesser
+        if (a.at(i) < a.at(j)) {
+            tmp.at(k) = a.at(i);
+            i++;
+            k++;
+        }
+        else { // If right element is lesser or equal
+            tmp.at(k) = a.at(j);
+            j++;
+            k++;
+        }
+    }
+    if (i == (middle + 1)) { // If the end of the left list has been reached
+        while (j < right) {
+            tmp.at(k) = a.at(j);
+            j++;
+            k++;
+        }
+    }
+    else if (j == right) { // If the end of the right list has been reached
+        while (i < (middle + 1)) {
+            tmp.at(k) = a.at(i);
+            i++;
+            k++;
         }
     }
 }
