@@ -1,9 +1,19 @@
+// Author: Nathan Maynard
+// Course: CSC 112 Section B (Fall 2019)
+// Project: Project 2 - MergeSort
+// Due Date: 5:00pm, Sept. 19, 2019
+// Purpose:
+
 #include <iostream>
 #include <vector>
 using namespace std;
 
-// function declarations
+// Function Declarations
+
+// "Divide"
 void mergeSort(vector<int>& a, vector<int>& tmp, int left, int right);
+
+// "Conquer"
 void mergeSortedLists(vector<int>& a, vector<int>& tmp, int left, int middle, int right);
 
 int main() {
@@ -26,6 +36,7 @@ int main() {
 
     // sort v
     /* your code here */
+    mergeSort(v, t, 0, v.size());
 
     // print output
     for(int i = 0; i < v.size(); i++) {
@@ -42,3 +53,28 @@ int main() {
 }
 
 /* your code here */
+void mergeSort(vector<int>& a, vector<int>& tmp, int left, int right) {
+    // Quick Return if Vector Size is 1
+    if (a.size() == 1) {
+        return;
+    }
+
+    // Left Half
+    mergeSort(a, tmp, left, ((right + left) / 2));
+
+    // Right Half
+    mergeSort(a, tmp, (((left + right) / 2) + 1), right);
+
+    // Organize and Merge
+    mergeSortedLists(a, tmp, left, (((right + left) + 1) / 2), right);
+}
+
+void mergeSortedLists(vector<int>& a, vector<int>& tmp, int left, int middle, int right) {
+    for (int i = left; i > middle; i++) {
+        if (a.at(i) < a.at(i + 1)) {
+            tmp.at(i) = a.at(i);
+            a.at(i) = a.at(i + 1);
+            a.at(i + 1) = tmp.at(i);
+        }
+    }
+}
