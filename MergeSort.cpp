@@ -57,7 +57,7 @@ int main() {
     for(int i = 0; i < testVect2.size(); i++) {
         cout << testVect2.at(i) << '\t';
     }
-    cout << endl << endl;
+    cout << "Testing Complete" << endl << endl;
 
     // initialize and print input
     cout << "Unorganized Values:" << endl;
