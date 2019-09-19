@@ -30,10 +30,10 @@ int main() {
 
     // unit test for merge
     /* your code here */
-    cout << "Beginning MergeSort Unit Test" << endl;
+    cout << "Beginning mergeSortedLists Unit Test" << endl;
     vector<int> testVect1{0,2,4,6,8,1,3,5,7,9}; // Test 1
     vector<int> testTempVect1(10);
-    cout << "Test 1: Using mergeSortedLists() Only" << endl;
+    cout << "Test 1" << endl;
     cout << "Original Vector Contents:" << endl;
     cout << "0,2,4,6,8,1,3,5,7,9" << endl;
     cout << "Expected Organized Contents:" << endl;
@@ -47,7 +47,7 @@ int main() {
 
     vector<int> testVect2{2,4,3,1,5}; // Test 2
     vector<int> testTempVect2(5);
-    cout << "Test 2: Using mergeSortedLists() Only" << endl;
+    cout << "Test 2" << endl;
     cout << "Original Vector Contents:" << endl;
     cout << "2,4,3,1,5" << endl;
     cout << "Expected Organized Contents:" << endl;
@@ -56,34 +56,6 @@ int main() {
     mergeSortedLists(testVect2, testTempVect2, 0, (((testVect2.size() - 1) + 0) / 2), (testVect2.size() - 1));
     for(int i = 0; i < testVect2.size(); i++) {
         cout << testVect2.at(i) << '\t';
-    }
-    cout << endl << endl;
-
-    vector<int> testVect3{1,0,1,0,1,0,1,0,1,0}; // Test 3
-    vector<int> testTempVect3(10);
-    cout << "Test 3: Using mergeSortedLists() and mergeSort()" << endl;
-    cout << "Original Vector Contents:" << endl;
-    cout << "1,0,1,0,1,0,1,0,1,0" << endl;
-    cout << "Expected Organized Contents:" << endl;
-    cout << "0,0,0,0,0,1,1,1,1,1" << endl;
-    cout << "Received Result:" << endl;
-    mergeSort(testVect3, testTempVect3, 0, (testVect3.size() - 1));
-    for(int i = 0; i < testVect3.size(); i++) {
-        cout << testVect3.at(i) << '\t';
-    }
-    cout << endl << endl;
-
-    vector<int> testVect4{9,8,7,6,5,4,3,2,1,0}; // Test 4
-    vector<int> testTempVect4(10);
-    cout << "Test 4: Using mergeSortedLists() and mergeSort()" << endl;
-    cout << "Original Vector Contents:" << endl;
-    cout << "9,8,7,6,5,4,3,2,1,0" << endl;
-    cout << "Expected Organized Contents:" << endl;
-    cout << "0,1,2,3,4,5,6,7,8,9" << endl;
-    cout << "Received Result:" << endl;
-    mergeSort(testVect4, testTempVect4, 0, (testVect4.size() - 1));
-    for(int i = 0; i < testVect4.size(); i++) {
-        cout << testVect4.at(i) << '\t';
     }
     cout << endl << endl;
 
