@@ -2,7 +2,8 @@
 // Course: CSC 112 Section B (Fall 2019)
 // Project: Project 2 - MergeSort
 // Due Date: 5:00pm, Sept. 19, 2019
-// Purpose:
+// Purpose: Takes a vector of random numbers and organizes them in ascending order
+//          using the "Divide and Conquer" method
 
 #include <iostream>
 #include <vector>
