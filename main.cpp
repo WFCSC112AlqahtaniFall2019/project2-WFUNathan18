@@ -39,15 +39,10 @@ int main() {
 
     // Sort v
     /* your code here */
-    mergeSort(v, t, 0, v.size());
-
-    // Overwrite v with the organized values in t
-    for (int i = 0; i < v.size(); i++) {
-        v.at(i) = t.at(i);
-    }
+    mergeSort(v, t, 0, (v.size() - 1));
 
     // Print Output
-    cout << "Organized Values" << endl;
+    cout << "Organized Values:" << endl;
     for(int i = 0; i < v.size(); i++) {
         cout << v.at(i) << '\t';
     }
@@ -64,7 +59,7 @@ int main() {
 /* your code here */
 void mergeSort(vector<int>& a, vector<int>& tmp, int left, int right) {
     // Quick Return if Vector Size is 1
-    if (a.size() == 1) {
+    if (left == right) {
         return;
     }
 
@@ -79,9 +74,9 @@ void mergeSort(vector<int>& a, vector<int>& tmp, int left, int right) {
 }
 
 void mergeSortedLists(vector<int>& a, vector<int>& tmp, int left, int middle, int right) {
-    int i = left;
-    int j = (middle + 1);
-    int k = left;
+    int i = left; // Index of the Left Half
+    int j = (middle + 1); // Index of the Right Half
+    int k = left; // Index of the temporary vector
     while (i < (middle + 1) && j < (right + 1)) { // If left element is lesser
         if (a.at(i) < a.at(j)) {
             tmp.at(k) = a.at(i);
@@ -94,18 +89,24 @@ void mergeSortedLists(vector<int>& a, vector<int>& tmp, int left, int middle, in
             k++;
         }
     }
-    if (i == (middle + 1)) { // If the end of the left list has been reached
-        while (j < right) {
+    if (i >= (middle + 1)) { // If the end of the left list has been reached
+        while (j <= right) {
             tmp.at(k) = a.at(j);
             j++;
             k++;
         }
     }
-    else if (j == right) { // If the end of the right list has been reached
+    else if (j >= right) { // If the end of the right list has been reached
         while (i < (middle + 1)) {
             tmp.at(k) = a.at(i);
             i++;
             k++;
         }
     }
+
+    // Overwrite Vector v with the organized values in Vector t
+    for (int h = left; h <= right; h++) {
+        a.at(h) = tmp.at(h);
+    }
+
 }
