@@ -29,6 +29,63 @@ int main() {
 
     // unit test for merge
     /* your code here */
+    cout << "Beginning MergeSort Unit Test" << endl;
+    vector<int> testVect1{0,2,4,6,8,1,3,5,7,9}; // Test 1
+    vector<int> testTempVect1(10);
+    cout << "Test 1: Using mergeSortedLists() Only" << endl;
+    cout << "Original Vector Contents:" << endl;
+    cout << "0,2,4,6,8,1,3,5,7,9" << endl;
+    cout << "Expected Organized Contents:" << endl;
+    cout << "0,1,2,3,4,5,6,7,8,9" << endl;
+    cout << "Received Result:" << endl;
+    mergeSortedLists(testVect1, testTempVect1, 0, (((testVect1.size() - 1) + 0) / 2), (testVect1.size() - 1));
+    for(int i = 0; i < testVect1.size(); i++) {
+        cout << testVect1.at(i) << '\t';
+    }
+    cout << endl << endl;
+
+    vector<int> testVect2{2,4,3,1,5}; // Test 2
+    vector<int> testTempVect2(5);
+    cout << "Test 2: Using mergeSortedLists() Only" << endl;
+    cout << "Original Vector Contents:" << endl;
+    cout << "2,4,3,1,5" << endl;
+    cout << "Expected Organized Contents:" << endl;
+    cout << "1,2,3,4,5" << endl;
+    cout << "Received Result:" << endl;
+    mergeSortedLists(testVect2, testTempVect2, 0, (((testVect2.size() - 1) + 0) / 2), (testVect2.size() - 1));
+    for(int i = 0; i < testVect2.size(); i++) {
+        cout << testVect2.at(i) << '\t';
+    }
+    cout << endl << endl;
+
+    vector<int> testVect3{1,0,1,0,1,0,1,0,1,0}; // Test 3
+    vector<int> testTempVect3(10);
+    cout << "Test 3: Using mergeSortedLists() and mergeSort()" << endl;
+    cout << "Original Vector Contents:" << endl;
+    cout << "1,0,1,0,1,0,1,0,1,0" << endl;
+    cout << "Expected Organized Contents:" << endl;
+    cout << "0,0,0,0,0,1,1,1,1,1" << endl;
+    cout << "Received Result:" << endl;
+    mergeSort(testVect3, testTempVect3, 0, (testVect3.size() - 1));
+    for(int i = 0; i < testVect3.size(); i++) {
+        cout << testVect3.at(i) << '\t';
+    }
+    cout << endl << endl;
+
+    vector<int> testVect4{9,8,7,6,5,4,3,2,1,0}; // Test 4
+    vector<int> testTempVect4(10);
+    cout << "Test 4: Using mergeSortedLists() and mergeSort()" << endl;
+    cout << "Original Vector Contents:" << endl;
+    cout << "9,8,7,6,5,4,3,2,1,0" << endl;
+    cout << "Expected Organized Contents:" << endl;
+    cout << "0,1,2,3,4,5,6,7,8,9" << endl;
+    cout << "Received Result:" << endl;
+    mergeSort(testVect4, testTempVect4, 0, (testVect4.size() - 1));
+    for(int i = 0; i < testVect4.size(); i++) {
+        cout << testVect4.at(i) << '\t';
+    }
+    cout << endl << endl;
+
     // initialize and print input
     cout << "Unorganized Values:" << endl;
     for(int i = 0; i < v.size(); i++) {
@@ -58,7 +115,7 @@ int main() {
 
 /* your code here */
 void mergeSort(vector<int>& a, vector<int>& tmp, int left, int right) {
-    // Quick Return if Vector Size is 1
+    // Quick Return if size is 1
     if (left == right) {
         return;
     }
@@ -77,8 +134,8 @@ void mergeSortedLists(vector<int>& a, vector<int>& tmp, int left, int middle, in
     int i = left; // Index of the Left Half
     int j = (middle + 1); // Index of the Right Half
     int k = left; // Index of the temporary vector
-    while (i < (middle + 1) && j < (right + 1)) { // If left element is lesser
-        if (a.at(i) < a.at(j)) {
+    while (i < (middle + 1) && j < (right + 1)) {
+        if (a.at(i) < a.at(j)) { // If left element is lesser
             tmp.at(k) = a.at(i);
             i++;
             k++;
