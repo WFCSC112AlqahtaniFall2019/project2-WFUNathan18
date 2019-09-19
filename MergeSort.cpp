@@ -30,34 +30,24 @@ int main() {
 
     // unit test for merge
     /* your code here */
-    cout << "Beginning mergeSortedLists Unit Test" << endl;
-    vector<int> testVect1{0,2,4,6,8,1,3,5,7,9}; // Test 1
-    vector<int> testTempVect1(10);
-    cout << "Test 1" << endl;
+    cout << "Beginning mergeSortedLists() Unit Test" << endl << endl;
+    vector<int> testVect{0,2,4,6,8,1,3,5,7,9}; // Only 'Left' and 'Right' halves are sorted
+    vector<int> testTempVect(10);
+    vector<int> testExpVect{0,1,2,3,4,5,6,7,8,9}; // Expected result, used with assert
     cout << "Original Vector Contents:" << endl;
     cout << "0,2,4,6,8,1,3,5,7,9" << endl;
     cout << "Expected Organized Contents:" << endl;
     cout << "0,1,2,3,4,5,6,7,8,9" << endl;
     cout << "Received Result:" << endl;
-    mergeSortedLists(testVect1, testTempVect1, 0, (((testVect1.size() - 1) + 0) / 2), (testVect1.size() - 1));
-    for(int i = 0; i < testVect1.size(); i++) {
-        cout << testVect1.at(i) << '\t';
+    mergeSortedLists(testVect, testTempVect, 0, (((testVect.size() - 1) + 0) / 2), (testVect.size() - 1));
+    for(int i = 0; i < testVect.size(); i++) { // Print testVect after mergeSortedLists()
+        cout << testVect.at(i) << '\t';
     }
-    cout << endl << endl;
-
-    vector<int> testVect2{2,4,3,1,5}; // Test 2
-    vector<int> testTempVect2(5);
-    cout << "Test 2" << endl;
-    cout << "Original Vector Contents:" << endl;
-    cout << "2,4,3,1,5" << endl;
-    cout << "Expected Organized Contents:" << endl;
-    cout << "1,2,3,4,5" << endl;
-    cout << "Received Result:" << endl;
-    mergeSortedLists(testVect2, testTempVect2, 0, (((testVect2.size() - 1) + 0) / 2), (testVect2.size() - 1));
-    for(int i = 0; i < testVect2.size(); i++) {
-        cout << testVect2.at(i) << '\t';
+    for(int i = 0; i < v.size(); i++) { // Assert that testVect and testExpVect have the same values after mergeSortedLists() has been called
+        assert(testVect.at(i) == testExpVect.at(i));
     }
-    cout << "Testing Complete" << endl << endl;
+    cout << endl;
+    cout << "Testing Completed Successfully!" << endl << endl;
 
     // initialize and print input
     cout << "Unorganized Values:" << endl;
